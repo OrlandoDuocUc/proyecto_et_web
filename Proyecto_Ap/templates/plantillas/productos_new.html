@@ -1,0 +1,30 @@
+<!-- productos.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Productos</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h1>Lista de Productos</h1>
+    <ul id="productos-lista"></ul>
+
+    <script>
+        $(document).ready(function() {
+            $.ajax({
+                url: '/api/productos/',
+                method: 'GET',
+                success: function(data) {
+                    var productos_lista = $('#productos-lista');
+                    productos_lista.empty();
+                    data.forEach(function(producto) {
+                        productos_lista.append('<li>' + producto.titulo + '</li>');
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+

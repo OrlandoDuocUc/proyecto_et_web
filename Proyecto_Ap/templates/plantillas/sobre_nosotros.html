@@ -1,0 +1,67 @@
+{% extends 'plantillas/base.html' %}
+{% load static %}
+
+{% block titulo %}
+    Sobre Nosotros
+{% endblock %}
+
+{% block contenido %}
+    <style>
+        .sobre-nosotros-container {
+            text-align: center;
+            padding: 50px;
+        }
+
+        .animate-title {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .animate-text {
+            font-size: 1.4em; /* Aumenta el tamaño de la fuente */
+            font-weight: bold; /* Hace la fuente más gruesa */
+            animation: fadeInUp 1s ease-out;
+            color: black; /* Cambia el color del texto a blanco para mayor contraste */
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const title = document.querySelector('.animate-title');
+            const texts = document.querySelectorAll('.animate-text');
+
+            title.classList.add('animate');
+            texts.forEach(function(text) {
+                text.classList.add('animate');
+            });
+        });
+    </script>
+
+    <div class="sobre-nosotros-container">
+        <h1 class="animate-title">Sobre Nosotros</h1>
+        <p class="animate-text">Bienvenidos a Supreme Sound un lugar por musicos y para musicos!.</p>
+        <p class="animate-text">Nuestra empresa está dedicada a proveer de los mejores artículos y marcas a nuestros clientes. Podrás encontrar productos como guitarras, bajos, baterías y distintos tipos de accesorios para apoyar tu talento musical. Te invitamos a vivir la experiencia de adquirir nuestros productos. Más de 20 años en el mercado nos dan el respaldo necesario para atender tus requerimientos desde un punto de vista profesional y con calidad en base a estándares internacionales. <br>¡Te esperamos!</p>
+    </div>
+{% endblock %}

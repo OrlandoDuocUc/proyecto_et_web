@@ -1,0 +1,95 @@
+{% extends 'plantillas/base.html' %}
+{% load custom_filters %}
+{% load static %}
+
+<!-- Este es el HTML del carrito de compras -->
+
+{% block titulo %}Carrito de Compras{% endblock %}
+
+{% block contenido %}
+<div class="container mt-5">
+    <h1 class="titulo-carrito">Carrito de Compras</h1>
+    {% if carrito %}
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Imagen</th>
+                        <th>Nombre</th>
+                        <th>Precio Unitario</th>
+                        <th>Cantidad</th>
+                        <th>Total</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for key, producto in carrito.items %}
+                    <tr>
+                        <td><img src="{{ producto.imagen }}" alt="{{ producto.nombre }}" width="50" class="img-fluid"></td>
+                        <td>{{ producto.nombre }}</td>
+                        <td>{{ producto.precio_unitario|currency_format }}</td>
+                        <td>{{ producto.cantidad }}</td>
+                        <td>{{ producto.precio_unitario|multiply:producto.cantidad|currency_format }}</td>
+                        <td>
+                            <a href="{% url 'sumar_producto' producto.producto_id %}" class="btn btn-success btn-sm">+</a>
+                            <a href="{% url 'restar_producto' producto.producto_id %}" class="btn btn-warning btn-sm">-</a>
+                            <a href="{% url 'eliminar_producto' producto.producto_id %}" class="btn btn-danger btn-sm">Eliminar</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="text-right mb-3">
+            <h2>Total: {{ total|currency_format }}</h2>
+            <button class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#redirectModal">Proceder al Pago</button>
+        </div>
+        <div class="text-left">
+            <a href="{% url 'empezar' %}" class="btn btn-secondary mt-3">Agregar más productos</a>
+        </div>
+    {% else %}
+        <p class="text-center">No hay productos en tu carrito.</p>
+    {% endif %}
+</div>
+
+<div class="modal fade" id="redirectModal" tabindex="-1" aria-labelledby="redirectModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="redirectModalLabel">Redirigiendo a página de pago</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Ahora serás redirigido a la página para confirmar tu pago.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <a href="{% url 'checkout' %}" class="btn btn-primary">Ir a Pago</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+    .titulo-carrito {
+        background-color: rgba(0, 0, 0, 0.7); /* Fondo negro con transparencia */
+        color: #fff; /* Texto blanco */
+        padding: 10px;
+        border-radius: 5px;
+        text-align: center;
+    }
+
+    .table {
+        background-color: rgba(255, 255, 255, 0.9);
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .thead-dark th {
+        background-color: #343a40; /* Color de fondo para el encabezado de la tabla */
+        color: #fff; /* Color del texto para el encabezado de la tabla */
+    }
+    .btn {
+        margin-top: 10px;
+    }
+</style>
+{% endblock %}

@@ -1,0 +1,21 @@
+h1 {
+    text-align: center;
+}
+
+/* Estilos para la lista de productos */
+.list-group {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Estilos para el precio del producto */
+.list-group-item {
+    justify-content: space-between;
+}
+
+/* Estilos para el botón de proceder al pago */
+.btn-primary {
+    display: block;
+    width: 200px;
+    margin: 20px auto;
+}

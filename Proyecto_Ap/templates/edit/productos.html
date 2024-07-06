@@ -1,0 +1,48 @@
+{% extends 'plantillas/base.html' %}
+{% load custom_filters %}
+{% block titulo %}Lista de Productos{% endblock %}
+
+<!--ESTA ES LA PAGINA DE ADMINISTRACION DE PRODUCTOS HAY QUE ESCONDERLA-->
+
+{% block contenido %} 
+<div class="card my-4">
+    <div class="card-header">
+        <a class="btn btn-success" href="{% url 'crear' %}" role="button">Agregar nuevo producto</a>
+    </div>
+    <div class="card-body">
+        <h1 class="productos-header">Productos</h1> <!-- Clase específica para el encabezado -->
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Título</th>
+                        <th scope="col">Imagen</th>
+                        <th scope="col">Descripción</th>
+                        <th scope="col">Precio</th>
+                        <th scope="col">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for producto in edit %}
+                    <tr>
+                        <td>{{ producto.id }}</td>
+                        <td>{{ producto.titulo }}</td>
+                        <td><img src="{{ producto.imagen.url }}" height="100" width="100" alt="{{ producto.titulo }}"></td>
+                        <td>{{ producto.descripcion }}</td>
+                        <td>{{ producto.precio|currency_format }}</td>
+                        <td>
+                            <a class="btn btn-info" href="{% url 'editar' producto.id %}" role="button">Editar</a>
+                            <a class="btn btn-danger" href="{% url 'eliminar' producto.id %}" role="button">Borrar</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="card-footer text-muted">
+        <!-- Opcional: puedes agregar algún texto o información adicional aquí -->
+    </div>
+</div> 
+{% endblock %}

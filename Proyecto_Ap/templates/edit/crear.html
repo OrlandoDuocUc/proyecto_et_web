@@ -1,0 +1,19 @@
+{% extends 'plantillas/base.html' %}
+
+{% block titulo %} Agregar nuevo Producto {% endblock %}
+
+{% block contenido %} 
+
+<div class="card" style="background-color: rgba(255, 255, 255, 0.9); border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+    <div class="card-header" style="text-align: center; font-weight: bold;">CREAR PRODUCTO NUEVO</div>
+    <div class="card-body" style="text-align: center;">
+        <h4 class="card-title" style="font-weight: bold;">Datos del Producto</h4>
+       
+        {% include 'edit/formulario.html' %}
+
+    </div>
+    <div class="card-footer text-muted"></div>
+</div>
+
+
+{% endblock %}

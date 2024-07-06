@@ -1,0 +1,41 @@
+dia 27 de junio 
+Cambie el nombre de dos botones para en primera instancia diferenciarlos y entender mejor su funcion.
+
+1_Uno el boton en inicio.html -> boton: Visita nuestra tienda (describe mejor lo que hace ya que al apretarlo te lleva a la tienda y a poder comprar productos).
+
+2_eL BOTON DEL NAVBAR LLAMADO: Editar productos (tambien apunta mejor a su funcion ya que este lleva a la pagina de edicion de productos.)
+
+
+3-cambios en plantilla checkout
+
+--NOMBRES IMPORTANTES:
+El interior del carrito de compras se llama: tienda.html
+
+1-lo que vamos a buscar en primera accion es que al apretar boton agregar al carro, solo deje ingresar a usuarios que han iniciado sesion. Si no han iniciado sesion estos usuarios seran redirigidos a un html de inicio de sesion luego de iniciar sesion seran devueltos al html llamado lista_productoss.html
+
+1.1-Problema resuelto cuando aprietas el boton "agregar al carro" y no estas aun logueado, al precionar el boton te redirigira a la pagina de inicio de sesion, al iniciar sesion y volver a esta pagina luego al presionar el boton podras agregar los productos al carrito sin problema y te redirigira al carrito.
+
+---------IMPORTANTE------------
+lista_productoss.html = esta es para el cliente
+productos.html = esta es solo para los administradores.
+
+NOMBRE DE LA TIENDA url empezar/ nombre del html que la contiene = edit/lista_productoss.html
+
+PAGINA ADMINISTRACION DE PRODUCTOS SE LLAMA edit/productos.html (en esta pagina editamos los productos)
+por lo tanto esta se debe ocultar al usuario normal, solo la deberia ver el usuario administrador.
+
+Siguiente cambio sera en navbar cambiar nombre de boton mas su redireccion: 
+
+-4. Agregamos un nuevo boton el cual se llama editar productos, pero para acceder a el, solo podran acceder quienes tienen un permiso para hacerlo, solamente los ADMINISTRADORES.
+4.1creamos el permiso editar_producto el cual nos permitira que a editar producto solo ingresen los usuarios que tengan tal permiso asignado.
+
+IMPORTANTE PARA QUE CORRAR EN CUALQUIER PC
+borrar entorno virtual.
+instalarlo nuevamente 
+activar entorno virtual.
+Luego ----->
+pip install pillow,
+pip intall tools, 
+pip install djangorestframework.
+
+usuarios administradores --> nombre:orlando password: orlando90

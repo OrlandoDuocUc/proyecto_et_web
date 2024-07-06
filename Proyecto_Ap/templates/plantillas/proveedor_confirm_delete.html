@@ -1,0 +1,14 @@
+<!-- proveedor_confirm_delete.html -->
+{% extends 'plantillas/base.html' %}
+
+{% block titulo %} Eliminar Proveedor {% endblock %}
+
+{% block contenido %}
+<h2>Eliminar Proveedor</h2>
+<p>¿Estás seguro de que deseas eliminar el proveedor "{{ proveedor.nombre }}"?</p>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Eliminar</button>
+    <a href="{% url 'proveedor_list' %}" class="btn btn-secondary">Cancelar</a>
+</form>
+{% endblock %}

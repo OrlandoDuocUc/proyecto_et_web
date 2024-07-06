@@ -1,0 +1,14 @@
+<!-- proveedor_form.html -->
+{% extends 'plantillas/base.html' %}
+
+{% block titulo %} {{ form.instance.pk|yesno:"Editar Proveedor,Agregar Proveedor" }} {% endblock %}
+
+{% block contenido %}
+<h2>{{ form.instance.pk|yesno:"Editar Proveedor,Agregar Proveedor" }}</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-success">Guardar</button>
+</form>
+<a href="{% url 'proveedor_list' %}" class="btn btn-secondary">Cancelar</a>
+{% endblock %}

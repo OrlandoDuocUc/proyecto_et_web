@@ -1,0 +1,14 @@
+{% extends 'plantillas/base.html' %}
+
+{% block titulo %}Confirmar Eliminación{% endblock %}
+
+{% block contenido %}
+<div class="container mt-5">
+    <h2>¿Estás seguro de que deseas eliminar este local?</h2>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Eliminar</button>
+        <a href="{% url 'local_list' %}" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+{% endblock %}

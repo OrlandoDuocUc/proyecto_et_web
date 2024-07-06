@@ -1,0 +1,14 @@
+{% extends 'plantillas/base.html' %}
+
+{% block titulo %}{{ form.instance.pk|yesno:"Editar Local,Agregar Local" }}{% endblock %}
+
+{% block contenido %}
+<div class="container mt-5">
+    <h2>{{ form.instance.pk|yesno:"Editar Local,Agregar Local" }}</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-success">Guardar</button>
+    </form>
+</div>
+{% endblock %}
